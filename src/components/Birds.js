@@ -26,7 +26,7 @@ function Birds(props) {
     return (
         <section className="container">
             {birds.map(bird => (
-                <Link to={`/details/${bird.id}`} key={bird.id}>
+                <Link to={`/details/${bird._id}`} key={bird.id}>
                     <div className="card">
                         <div className="card-image">
                             <img src={bird.image} alt={bird.name} />

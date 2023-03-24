@@ -1,4 +1,13 @@
-function BirdDetails() {
+import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+
+function BirdDetails(props) {
+    const [bird, setBird] = useState(null)
+    const {id} = useParams()
+    console.log(id)
+    useEffect(()=> {
+
+    },[])
     return (
         <div className="details-container">
             <img 

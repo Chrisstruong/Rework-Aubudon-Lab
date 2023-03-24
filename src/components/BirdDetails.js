@@ -5,21 +5,31 @@ function BirdDetails(props) {
     const [bird, setBird] = useState(null)
     const {id} = useParams()
     console.log(id)
+    
+    async function fetchDetailBird() {
+        try{
+            const reponse = await fetch(`https://ga-audubon-api.herokuapp.com/api/birds/${id}`)
+            const detailData = await reponse.json()
+            setBird(detailData)
+        } catch(err){
+            console.log(err)
+        }
+    }
     useEffect(()=> {
-
+        fetchDetailBird()
     },[])
+    if (!bird) {
+        return <p>...Loading bird information...</p>
+    }
     return (
         <div className="details-container">
-            <img 
-                src="https://www.audubon.org/sites/default/files/styles/bird_illustration/public/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
-                alt="Acadian Flycatcher"
-            />
+            <img src={bird.image} alt={bird.name} />
             <div className="details">
-                <h2>Acadian Flycatcher </h2>
-                <h3>(Empidonax virescens)</h3>
+                <h2>{bird.name} </h2>
+                <h3>{bird.genus}</h3>
                 <h4>Conversation Status</h4>
                 <p>
-                    Would be vulnerable to loss of habitat, but no significant decline noted so far. In some regions, Brown-headed Cowbirds lay eggs in nests of the species.
+                    {bird.conservationStatus}
                 </p>
                 <a
                     href="https://www.audubon.org/field-guide/bird/acadian-flycatcher"

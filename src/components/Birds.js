@@ -22,11 +22,11 @@ function Birds(props) {
     useEffect(() => {
         fetchBird()
     }, [])
-    
+
     return (
         <section className="container">
             {birds.map(bird => (
-                <Link to={`/details/${bird._id}`} key={bird.id}>
+                <Link to={`/details/${bird._id}`} key={bird._id}>
                     <div className="card">
                         <div className="card-image">
                             <img src={bird.image} alt={bird.name} />

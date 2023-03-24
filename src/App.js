@@ -1,6 +1,7 @@
 import React from 'react';
 import Birds from './components/Birds';
 import {Route, Routes} from 'react-router-dom'
+import BirdDetails from './components/BirdDetails'
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={ <Birds/> }/>
+          <Route path="/details/:id" element={ <BirdDetails/> }/>
         </Routes>
       </main>
     </>

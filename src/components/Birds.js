@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-
+import { Link } from "react-router-dom"
 
 function Birds(props) {
     const [birds, setBirds] = useState([]) //<-- Set the initial state here by passing it an empty array []
@@ -25,21 +25,18 @@ function Birds(props) {
     
     return (
         <section className="container">
-            {birds.map(bird => {
-                return (
+            {birds.map(bird => (
+                <Link to={`/details/${bird.id}`} key={bird.id}>
                     <div className="card">
                         <div className="card-image">
-                            <img
-                                src="https://www.audubon.org/sites/default/files/styles/bird_illustration/public/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
-                                alt="Acadian Flycatcher"
-                            />
+                            <img src={bird.image} alt={bird.name} />
                         </div>
                         <div className="card-title">
-                            <h3>Acadian Flycatcher</h3>
+                            <h3>{bird.name}</h3>
                         </div>
                     </div>
-                )
-            })}
+                </Link>
+            ))}
 
         </section>
     )

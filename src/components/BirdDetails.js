@@ -8,8 +8,8 @@ function BirdDetails(props) {
     
     async function fetchDetailBird() {
         try{
-            const reponse = await fetch(`https://ga-audubon-api.herokuapp.com/api/birds/${id}`)
-            const detailData = await reponse.json()
+            const response = await fetch(`https://ga-audubon-api.herokuapp.com/api/birds/${id}`)
+            const detailData = await response.json()
             setBird(detailData)
         } catch(err){
             console.log(err)
@@ -21,7 +21,7 @@ function BirdDetails(props) {
     if (!bird) {
         return <p>...Loading bird information...</p>
     }
-    return (
+    else {return (
         <div className="details-container">
             <img src={bird.image} alt={bird.name} />
             <div className="details">
@@ -32,13 +32,13 @@ function BirdDetails(props) {
                     {bird.conservationStatus}
                 </p>
                 <a
-                    href="https://www.audubon.org/field-guide/bird/acadian-flycatcher"
+                    href={bird.homepage}
                     target="_blank"
                     rel="noopener noreferrer"
                 >Read More</a>
             </div>
         </div>
-    )
+    )}
 } 
 
 export default BirdDetails

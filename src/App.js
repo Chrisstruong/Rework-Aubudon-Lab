@@ -1,5 +1,6 @@
 import React from 'react';
 import Birds from './components/Birds';
+import {Route, Routes} from 'react-router-dom'
 
 
 
@@ -12,7 +13,9 @@ function App() {
         </h1>
       </header>
       <main>
-        <Birds/>
+        <Routes>
+          <Route path="/" element={ <Birds/> }/>
+        </Routes>
       </main>
     </>
   );
